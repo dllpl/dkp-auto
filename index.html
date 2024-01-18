@@ -2,90 +2,743 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Договор купли-продажи автомобиля, мотоцикла, транспортного средства</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.4.10/dist/vuetify.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <style>
+        .v-row {
+            margin: 0;
+        }
+        .v-col {
+            padding: 0;
+        }
+
+    </style>
 </head>
 <body>
 <div id="app">
     <v-form v-model="valid" v-slot="{errors}">
         <v-container>
-            <v-field
-                    v-slot="{ field, errors }"
-                    rules="required|min:10|max:10|alpha:ru"
-                    name="form.date"
-            >
-                <v-text-field
-                        v-bind="field"
-                        :model="form.date"
-                        :counter="30"
-                        label="Дата оформления"
-                        :error-messages="errors"
-                        class="mb-3"
-                ></v-text-field>
-            </v-field>
 
-<!--            <v-text-field-->
-<!--                    v-model="form.place"-->
-<!--                    rules="required"-->
-<!--                    :counter="10"-->
-<!--                    label="Место офоромления"-->
-<!--                    hide-details-->
-<!--                    required-->
-<!--            ></v-text-field>-->
+            <v-card title="Дата и место составления" class="mb-5">
+                <v-card-text>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="min:10"
+                            name="form.date"
+                    >
+                        <v-text-field
+                                v-maska:[form.date.options]
+                                clearable
+                                v-bind="field"
+                                v-model="form.date.val"
+                                label="Дата составления"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="min:5|max:50"
+                            name="form.place"
+                    >
+                        <v-text-field
+                                v-bind="field"
+                                v-model="form.place.val"
+                                label="Место составления"
+                                :error-messages="errors"
+
+                                clearable
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                </v-card-text>
+            </v-card>
+
+            <v-card title="Текущий владелец транспортного средства" text="Как в паспорте" class="mb-5">
+                <v-card-text>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:50|min:5"
+                            name="form.owner.current.fio"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.current.fio"
+                                label="ФИО"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules=""
+                            name="form.owner.current.pass.series_and_number"
+                    >
+                        <v-text-field
+                                v-maska:[form.owner.current.pass.series_and_number.options]
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.current.pass.series_and_number.val"
+                                label="Серия и номер паспорта"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-row>
+                        <v-col class="mr-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="min:10"
+                                    name="form.owner.current.pass.date"
+                            >
+                                <v-text-field
+                                        v-maska:[form.owner.current.pass.date.options]
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.owner.current.pass.date.val"
+                                        label="Дата выдачи"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                        <v-col class="ml-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules=""
+                                    name="form.owner.current.pass.code"
+                            >
+                                <v-text-field
+                                        v-maska:[form.owner.current.pass.code.options]
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.owner.current.pass.code.val"
+                                        label="Код подразделения"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                    </v-row>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:50"
+                            name="form.owner.current.pass.who_give"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.current.pass.who_give.val"
+                                label="Кем выдан"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:10|min:10"
+                            name="form.owner.current.birthdate"
+                    >
+                        <v-text-field
+                                v-maska:[form.owner.current.birthdate.options]
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.current.birthdate.val"
+                                label="Дата рождения"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:50"
+                            name="form.owner.current.birthplace"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.current.birthplace.val"
+                                label="Место рождения"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:50"
+                            name="form.owner.current.reg_address"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.current.reg_address.val"
+                                label="Адрес регистрации"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                </v-card-text>
+            </v-card>
+
+            <v-card title="Покупатель транспортного средства" text="Как в паспорте" class="mb-5">
+                <v-card-text>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:50|min:5"
+                            name="form.owner.new.fio"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.new.fio"
+                                label="ФИО"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules=""
+                            name="form.owner.new.pass.series_and_number"
+                    >
+                        <v-text-field
+                                v-maska:[form.owner.new.pass.series_and_number.options]
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.new.pass.series_and_number.val"
+                                label="Серия и номер паспорта"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-row>
+                        <v-col class="mr-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="min:10"
+                                    name="form.owner.new.pass.date"
+                            >
+                                <v-text-field
+                                        v-maska:[form.owner.new.pass.date.options]
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.owner.new.pass.date.val"
+                                        label="Дата выдачи"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                        <v-col class="ml-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules=""
+                                    name="form.owner.new.pass.code"
+                            >
+                                <v-text-field
+                                        v-maska:[form.owner.new.pass.code.options]
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.owner.new.pass.code.val"
+                                        label="Код подразделения"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                    </v-row>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:50"
+                            name="form.owner.new.pass.who_give"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.new.pass.who_give.val"
+                                label="Кем выдан"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:10|min:10"
+                            name="form.owner.new.birthdate"
+                    >
+                        <v-text-field
+                                v-maska:[form.owner.new.birthdate.options]
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.new.birthdate.val"
+                                label="Дата рождения"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:50"
+                            name="form.owner.new.birthplace"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.new.birthplace.val"
+                                label="Место рождения"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:50"
+                            name="form.owner.new.reg_address"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.owner.new.reg_address.val"
+                                label="Адрес регистрации"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                </v-card-text>
+            </v-card>
+
+            <v-card title="Транспортное средство" text="Если понадобится, посмотрите, где найти VIN и номер СТС" class="mb-5">
+                <v-card-text>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:50|min:3"
+                            name="form.auto.mark_and_model"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.auto.mark_and_model.val"
+                                label="Марка и модель"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:17"
+                            name="form.auto.vin"
+                    >
+                        <v-text-field
+                                v-maska:[form.auto.vin.options]
+                                clearable
+                                v-bind="field"
+                                v-model="form.auto.vin.val"
+                                label="VIN номер"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules=""
+                            name="form.auto.type"
+                    >
+                        <v-select
+                                :items="dict.auto_types"
+                                clearable
+                                v-bind="field"
+                                v-model="form.auto.type.val"
+                                label="Тип ТС"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-select>
+                    </v-field>
+                    <v-row>
+                        <v-col class="mr-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:10"
+                                    name="form.auto.year"
+                            >
+                                <v-text-field
+                                        v-maska:[form.auto.year.options]
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.auto.year.val"
+                                        label="Год выпуска"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                        <v-col class="ml-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:6"
+                                    name="form.auto.mileage"
+                            >
+                                <v-text-field
+                                        type="number"
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.auto.mileage.val"
+                                        label="Пробег, км"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col class="mr-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:4"
+                                    name="form.auto.power"
+                            >
+                                <v-text-field
+                                        type="number"
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.auto.power.val"
+                                        label="Мощность двигателя, л.с."
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                        <v-col class="ml-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:5"
+                                    name="form.auto.volume"
+                            >
+                                <v-text-field
+                                        type="number"
+                                        clearable
+                                        v-bind="field"
+                                        v-model.number="form.auto.volume.val"
+                                        label="Рабочий объем, куб.см."
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                    </v-row>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:15"
+                            name="form.auto.color"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.auto.color.val"
+                                label="Цвет"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-row>
+                        <v-col class="mr-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:30"
+                                    name="form.auto.engine_model"
+                            >
+                                <v-text-field
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.auto.engine_model.val"
+                                        label="Модель двигателя"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                        <v-col class="ml-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:20"
+                                    name="form.auto.engine_number"
+                            >
+                                <v-text-field
+                                        type="number"
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.auto.engine_number.val"
+                                        label="Номер двигателя"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                    </v-row>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:20"
+                            name="form.chassis_number.color"
+                            v-model="form.auto.chassis_number.val"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                label="Номер шасси, рамы"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:20"
+                            name="form.body_number.color"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.auto.body_number.val"
+                                label="Номер кузова"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-row>
+                        <v-col class="mr-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:15"
+                                    name="form.auto.pts.series_and_number"
+                            >
+                                <v-text-field
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.auto.pts.series_and_number.val"
+                                        label="ПТС, серия/номер"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                        <v-col class="ml-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:10"
+                                    name="form.auto.pts.date"
+                            >
+                                <v-text-field
+                                        v-maska:[form.auto.pts.date.options]
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.auto.pts.date.val"
+                                        label="ПТС, дата выдачи"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                    </v-row>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:30"
+                            name="form.auto.pts.who_give"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.auto.pts.who_give.val"
+                                label="ПТС, кем выдан"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:20"
+                            name="form.auto.gos_number"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.auto.gos_number.val"
+                                label="Гос. номер"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-row>
+                        <v-col class="mr-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:30"
+                                    name="form.auto.sts.series"
+                            >
+                                <v-text-field
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.auto.sts.series.val"
+                                        label="СТС, серия"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                        <v-col class="ml-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:30"
+                                    name="form.auto.sts.number"
+                            >
+                                <v-text-field
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.auto.sts.number.val"
+                                        label="СТС, номер"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                        <v-col class="ml-2">
+                            <v-field
+                                    v-slot="{ field, errors }"
+                                    rules="max:10"
+                                    name="form.auto.sts.date"
+                            >
+                                <v-text-field
+                                        v-maska:[form.auto.sts.date.options]
+                                        clearable
+                                        v-bind="field"
+                                        v-model="form.auto.sts.date.val"
+                                        label="СТС, дата выдачи"
+                                        :error-messages="errors"
+
+                                        variant="outlined"
+                                        density="compact"
+                                ></v-text-field>
+                            </v-field>
+                        </v-col>
+                    </v-row>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:50"
+                            name="form.auto.sts.who_give"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.auto.sts.who_give.val"
+                                label="СТС, кем выдан"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                    <v-field
+                            v-slot="{ field, errors }"
+                            rules="max:30"
+                            name="form.auto.price"
+                    >
+                        <v-text-field
+                                clearable
+                                v-bind="field"
+                                v-model="form.auto.price.val"
+                                label="Стоимость ТС"
+                                :error-messages="errors"
+
+                                variant="outlined"
+                                density="compact"
+                        ></v-text-field>
+                    </v-field>
+                </v-card-text>
+            </v-card>
+
         </v-container>
     </v-form>
 </div>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 <script src="https://unpkg.com/vee-validate@next"></script>
 <script src="https://unpkg.com/@vee-validate/rules@next"></script>
 <script src="https://unpkg.com/@vee-validate/i18n@next"></script>
 <script src="https://cdn.jsdelivr.net/npm/vuetify@3.4.10/dist/vuetify.min.js"></script>
-<script>
-    const {defineRule, Form, Field, ErrorMessage, configure} = VeeValidate
-    const {setLocale, loadLocaleFromURL, localize} = VeeValidateI18n
-    const {createVuetify} = Vuetify
-
-    Object.keys(VeeValidateRules.default).forEach(rule => {
-        defineRule(rule, VeeValidateRules[rule])
-    })
-    loadLocaleFromURL('https://unpkg.com/@vee-validate/i18n@4.5.7/dist/locale/ru.json')
-    configure({
-        generateMessage: localize('ru', {
-            names: {
-                'form.date': '"Дата оформления"'
-            }
-        })
-    })
-
-    const vuetify = createVuetify()
-</script>
-
-<script>
-    const app = Vue.createApp({
-        components: {
-            VForm: Form,
-            VField: Field,
-            ErrorMessage,
-        },
-        data() {
-            return {
-                valid: false,
-                form: {
-                    date: '',
-                    place: ''
-                }
-            }
-        },
-        methods: {
-            onSubmit(values) {
-                // TODO:
-            }
-        }
-    })
-        .use(vuetify)
-        .mount('#app')
-
-
-</script>
+<script src="https://cdn.jsdelivr.net/npm/maska@latest/dist/maska.umd.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
