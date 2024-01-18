@@ -12,6 +12,7 @@
         .v-row {
             margin: 0;
         }
+
         .v-col {
             padding: 0;
         }
@@ -31,10 +32,10 @@
                             name="form.date"
                     >
                         <v-text-field
-                                v-maska:[form.date.options]
+                                v-maska:[options.date]
                                 clearable
                                 v-bind="field"
-                                v-model="form.date.val"
+                                v-model="form.date"
                                 label="Дата составления"
                                 :error-messages="errors"
 
@@ -49,7 +50,7 @@
                     >
                         <v-text-field
                                 v-bind="field"
-                                v-model="form.place.val"
+                                v-model="form.place"
                                 label="Место составления"
                                 :error-messages="errors"
 
@@ -74,7 +75,6 @@
                                 v-model="form.owner.current.fio"
                                 label="ФИО"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -85,13 +85,12 @@
                             name="form.owner.current.pass.series_and_number"
                     >
                         <v-text-field
-                                v-maska:[form.owner.current.pass.series_and_number.options]
+                                v-maska:[options.series_and_number]
                                 clearable
                                 v-bind="field"
-                                v-model="form.owner.current.pass.series_and_number.val"
+                                v-model="form.owner.current.pass.series_and_number"
                                 label="Серия и номер паспорта"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -104,13 +103,12 @@
                                     name="form.owner.current.pass.date"
                             >
                                 <v-text-field
-                                        v-maska:[form.owner.current.pass.date.options]
+                                        v-maska:[options.date]
                                         clearable
                                         v-bind="field"
-                                        v-model="form.owner.current.pass.date.val"
+                                        v-model="form.owner.current.pass.date"
                                         label="Дата выдачи"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -123,13 +121,12 @@
                                     name="form.owner.current.pass.code"
                             >
                                 <v-text-field
-                                        v-maska:[form.owner.current.pass.code.options]
+                                        v-maska:[options.pass_code]
                                         clearable
                                         v-bind="field"
-                                        v-model="form.owner.current.pass.code.val"
+                                        v-model="form.owner.current.pass.code"
                                         label="Код подразделения"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -144,10 +141,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.owner.current.pass.who_give.val"
+                                v-model="form.owner.current.pass.who_give"
                                 label="Кем выдан"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -158,13 +154,12 @@
                             name="form.owner.current.birthdate"
                     >
                         <v-text-field
-                                v-maska:[form.owner.current.birthdate.options]
+                                v-maska:[options.date]
                                 clearable
                                 v-bind="field"
-                                v-model="form.owner.current.birthdate.val"
+                                v-model="form.owner.current.birthdate"
                                 label="Дата рождения"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -177,10 +172,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.owner.current.birthplace.val"
+                                v-model="form.owner.current.birthplace"
                                 label="Место рождения"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -193,10 +187,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.owner.current.reg_address.val"
+                                v-model="form.owner.current.reg_address"
                                 label="Адрес регистрации"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -217,7 +210,6 @@
                                 v-model="form.owner.new.fio"
                                 label="ФИО"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -228,13 +220,12 @@
                             name="form.owner.new.pass.series_and_number"
                     >
                         <v-text-field
-                                v-maska:[form.owner.new.pass.series_and_number.options]
+                                v-maska:[options.series_and_number]
                                 clearable
                                 v-bind="field"
-                                v-model="form.owner.new.pass.series_and_number.val"
+                                v-model="form.owner.new.pass.series_and_number"
                                 label="Серия и номер паспорта"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -247,13 +238,12 @@
                                     name="form.owner.new.pass.date"
                             >
                                 <v-text-field
-                                        v-maska:[form.owner.new.pass.date.options]
+                                        v-maska:[options.date]
                                         clearable
                                         v-bind="field"
-                                        v-model="form.owner.new.pass.date.val"
+                                        v-model="form.owner.new.pass.date"
                                         label="Дата выдачи"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -266,13 +256,12 @@
                                     name="form.owner.new.pass.code"
                             >
                                 <v-text-field
-                                        v-maska:[form.owner.new.pass.code.options]
+                                        v-maska:[options.pass_code]
                                         clearable
                                         v-bind="field"
-                                        v-model="form.owner.new.pass.code.val"
+                                        v-model="form.owner.new.pass.code"
                                         label="Код подразделения"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -287,10 +276,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.owner.new.pass.who_give.val"
+                                v-model="form.owner.new.pass.who_give"
                                 label="Кем выдан"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -301,13 +289,12 @@
                             name="form.owner.new.birthdate"
                     >
                         <v-text-field
-                                v-maska:[form.owner.new.birthdate.options]
+                                v-maska:[options.date]
                                 clearable
                                 v-bind="field"
-                                v-model="form.owner.new.birthdate.val"
+                                v-model="form.owner.new.birthdate"
                                 label="Дата рождения"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -320,10 +307,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.owner.new.birthplace.val"
+                                v-model="form.owner.new.birthplace"
                                 label="Место рождения"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -336,10 +322,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.owner.new.reg_address.val"
+                                v-model="form.owner.new.reg_address"
                                 label="Адрес регистрации"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -347,7 +332,8 @@
                 </v-card-text>
             </v-card>
 
-            <v-card title="Транспортное средство" text="Если понадобится, посмотрите, где найти VIN и номер СТС" class="mb-5">
+            <v-card title="Транспортное средство" text="Если понадобится, посмотрите, где найти VIN и номер СТС"
+                    class="mb-5">
                 <v-card-text>
                     <v-field
                             v-slot="{ field, errors }"
@@ -357,10 +343,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.auto.mark_and_model.val"
+                                v-model="form.auto.mark_and_model"
                                 label="Марка и модель"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -371,13 +356,12 @@
                             name="form.auto.vin"
                     >
                         <v-text-field
-                                v-maska:[form.auto.vin.options]
+                                v-maska:[options.vin]
                                 clearable
                                 v-bind="field"
-                                v-model="form.auto.vin.val"
+                                v-model="form.auto.vin"
                                 label="VIN номер"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -391,10 +375,9 @@
                                 :items="dict.auto_types"
                                 clearable
                                 v-bind="field"
-                                v-model="form.auto.type.val"
+                                v-model="form.auto.type"
                                 label="Тип ТС"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-select>
@@ -403,17 +386,16 @@
                         <v-col class="mr-2">
                             <v-field
                                     v-slot="{ field, errors }"
-                                    rules="max:10"
+                                    rules="min:4"
                                     name="form.auto.year"
                             >
                                 <v-text-field
-                                        v-maska:[form.auto.year.options]
+                                        v-maska:[options.year]
                                         clearable
                                         v-bind="field"
-                                        v-model="form.auto.year.val"
+                                        v-model="form.auto.year"
                                         label="Год выпуска"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -429,10 +411,9 @@
                                         type="number"
                                         clearable
                                         v-bind="field"
-                                        v-model="form.auto.mileage.val"
+                                        v-model="form.auto.mileage"
                                         label="Пробег, км"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -450,10 +431,9 @@
                                         type="number"
                                         clearable
                                         v-bind="field"
-                                        v-model="form.auto.power.val"
+                                        v-model="form.auto.power"
                                         label="Мощность двигателя, л.с."
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -469,10 +449,9 @@
                                         type="number"
                                         clearable
                                         v-bind="field"
-                                        v-model.number="form.auto.volume.val"
+                                        v-model.number="form.auto.volume"
                                         label="Рабочий объем, куб.см."
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -487,10 +466,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.auto.color.val"
+                                v-model="form.auto.color"
                                 label="Цвет"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -505,10 +483,9 @@
                                 <v-text-field
                                         clearable
                                         v-bind="field"
-                                        v-model="form.auto.engine_model.val"
+                                        v-model="form.auto.engine_model"
                                         label="Модель двигателя"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -524,10 +501,9 @@
                                         type="number"
                                         clearable
                                         v-bind="field"
-                                        v-model="form.auto.engine_number.val"
+                                        v-model="form.auto.engine_number"
                                         label="Номер двигателя"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -538,14 +514,13 @@
                             v-slot="{ field, errors }"
                             rules="max:20"
                             name="form.chassis_number.color"
-                            v-model="form.auto.chassis_number.val"
+                            v-model="form.auto.chassis_number"
                     >
                         <v-text-field
                                 clearable
                                 v-bind="field"
                                 label="Номер шасси, рамы"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -558,10 +533,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.auto.body_number.val"
+                                v-model="form.auto.body_number"
                                 label="Номер кузова"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -576,10 +550,9 @@
                                 <v-text-field
                                         clearable
                                         v-bind="field"
-                                        v-model="form.auto.pts.series_and_number.val"
+                                        v-model="form.auto.pts.series_and_number"
                                         label="ПТС, серия/номер"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -588,17 +561,16 @@
                         <v-col class="ml-2">
                             <v-field
                                     v-slot="{ field, errors }"
-                                    rules="max:10"
+                                    rules="min:10"
                                     name="form.auto.pts.date"
                             >
                                 <v-text-field
-                                        v-maska:[form.auto.pts.date.options]
+                                        v-maska:[options.date]
                                         clearable
                                         v-bind="field"
-                                        v-model="form.auto.pts.date.val"
+                                        v-model="form.auto.pts.date"
                                         label="ПТС, дата выдачи"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -613,10 +585,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.auto.pts.who_give.val"
+                                v-model="form.auto.pts.who_give"
                                 label="ПТС, кем выдан"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -629,10 +600,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.auto.gos_number.val"
+                                v-model="form.auto.gos_number"
                                 label="Гос. номер"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -647,10 +617,9 @@
                                 <v-text-field
                                         clearable
                                         v-bind="field"
-                                        v-model="form.auto.sts.series.val"
+                                        v-model="form.auto.sts.series"
                                         label="СТС, серия"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -665,10 +634,9 @@
                                 <v-text-field
                                         clearable
                                         v-bind="field"
-                                        v-model="form.auto.sts.number.val"
+                                        v-model="form.auto.sts.number"
                                         label="СТС, номер"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -677,17 +645,16 @@
                         <v-col class="ml-2">
                             <v-field
                                     v-slot="{ field, errors }"
-                                    rules="max:10"
+                                    rules="min:10"
                                     name="form.auto.sts.date"
                             >
                                 <v-text-field
-                                        v-maska:[form.auto.sts.date.options]
+                                        v-maska:[options.date]
                                         clearable
                                         v-bind="field"
-                                        v-model="form.auto.sts.date.val"
+                                        v-model="form.auto.sts.date"
                                         label="СТС, дата выдачи"
                                         :error-messages="errors"
-
                                         variant="outlined"
                                         density="compact"
                                 ></v-text-field>
@@ -702,10 +669,9 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.auto.sts.who_give.val"
+                                v-model="form.auto.sts.who_give"
                                 label="СТС, кем выдан"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
@@ -718,16 +684,23 @@
                         <v-text-field
                                 clearable
                                 v-bind="field"
-                                v-model="form.auto.price.val"
+                                v-model="form.auto.price"
                                 label="Стоимость ТС"
                                 :error-messages="errors"
-
                                 variant="outlined"
                                 density="compact"
                         ></v-text-field>
                     </v-field>
                 </v-card-text>
             </v-card>
+            <v-row justify="center" align="center" justify-sm="space-between">
+                <v-btn color="blue" class="mb-5 mb-sm-0" @click="onSubmit">
+                    Скачать договор
+                </v-btn>
+                <v-btn variant="plain">
+                    Скачать пустой бланк
+                </v-btn>
+            </v-row>
 
         </v-container>
     </v-form>

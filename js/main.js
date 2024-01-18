@@ -8,176 +8,86 @@ const app = Vue.createApp({
         data() {
             return {
                 valid: false,
+
+                options: {
+                    date: {
+                        mask: '##.##.####'
+                    },
+                    vin: {
+                        mask: '#################'
+                    },
+                    pass_code: {
+                        mask: '###-###'
+                    },
+                    series_and_number: {
+                        mask: '#### ######'
+                    },
+                    year: {
+                        mask: '####',
+                        postProcess: val => {
+                            const max = "" + new Date().getFullYear()
+                            return val > max ? max : val
+                        }
+                    }
+                },
+
                 form: {
                     auto: {
-                        mark_and_model: {
-                            val: ''
-                        },
-                        vin: {
-                            val: '',
-                            options: {
-                                mask: '#################'
-                            }
-                        },
-                        type: {
-                            val: ''
-                        },
-                        year: {
-                            val: '',
-                            options: {
-                                mask: '##.##.####',
-                            }
-                        },
-                        mileage: {
-                            val: null,
-                        },
-                        power: {
-                            val: null,
-                        },
-                        volume: {
-                            val: null
-                        },
-                        color: {
-                            val: ''
-                        },
-                        engine_model: {
-                            val: ''
-                        },
-                        engine_number: {
-                            val: null
-                        },
-                        chassis_number: {
-                            val: 'Отсутствует'
-                        },
-                        body_number: {
-                            val: ''
-                        },
+                        mark_and_model: null,
+                        vin: null,
+                        type: null,
+                        year: null,
+                        mileage: null,
+                        power: null,
+                        volume: null,
+                        color: null,
+                        engine_model: null,
+                        engine_number: null,
+                        chassis_number: 'Отсутствует',
+                        body_number: null,
                         pts: {
-                            series_and_number: {
-                                val: null
-                            },
-                            date: {
-                                val: '',
-                                options: {
-                                    mask: '##.##.####',
-                                }
-                            },
-                            who_give: {
-                                val: ''
-                            },
+                            series_and_number: null,
+                            date: null,
+                            who_give: null,
                         },
-                        gos_number: {
-                            val: ''
-                        },
+                        gos_number: null,
                         sts: {
-                            series: {
-                                val: ''
-                            },
-                            number: {
-                                val: ''
-                            },
-                            date: {
-                                val: '',
-                                options: {
-                                    mask: '##.##.####',
-                                }
-                            },
-                            who_give: {
-                                val: ''
-                            },
+                            series: null,
+                            number: null,
+                            date: null,
+                            who_give: null,
                         },
-                        price: {
-                            val:'',
-                        }
+                        price: null
 
                     },
                     owner: {
                         current: {
-                            fio: '',
+                            fio: null,
                             pass: {
-                                series_and_number: {
-                                    val: '',
-                                    options: {
-                                        mask: '#### ######'
-                                    }
-                                },
-                                date: {
-                                    val: '',
-                                    options: {
-                                        mask: '##.##.####'
-                                    }
-                                },
-                                code: {
-                                    val: '',
-                                    options: {
-                                        mask: '###-###'
-                                    }
-                                },
-                                who_give: {
-                                    val: '',
-                                }
+                                series_and_number: null,
+                                date: null,
+                                code: null,
+                                who_give: null,
                             },
-                            birthdate: {
-                                val: '',
-                                options: {
-                                    mask: '##.##.####'
-                                }
-                            },
-                            birthplace: {
-                                val: '',
-                            },
-                            reg_address: {
-                                val: '',
-                            }
+                            birthdate: null,
+                            birthplace: null,
+                            reg_address: null
                         },
                         new: {
-                            fio: '',
+                            fio: null,
                             pass: {
-                                series_and_number: {
-                                    val: '',
-                                    options: {
-                                        mask: '#### ######'
-                                    }
-                                },
-                                date: {
-                                    val: '',
-                                    options: {
-                                        mask: '##.##.####'
-                                    }
-                                },
-                                code: {
-                                    val: '',
-                                    options: {
-                                        mask: '###-###'
-                                    }
-                                },
-                                who_give: {
-                                    val: '',
-                                }
+                                series_and_number: null,
+                                date: null,
+                                code: null,
+                                who_give: null,
                             },
-                            birthdate: {
-                                val: '',
-                                options: {
-                                    mask: '##.##.####'
-                                }
-                            },
-                            birthplace: {
-                                val: '',
-                            },
-                            reg_address: {
-                                val: '',
-                            }
+                            birthdate: null,
+                            birthplace: null,
+                            reg_address: null
                         }
                     },
-                    place: {
-                        val: '',
-                    },
-                    date: {
-                        val: '',
-                        options: {
-                            mask: '##.##.####'
-                        }
-                    },
+                    place: null,
+                    date: null,
                 },
                 dict: {
                     auto_types: ['Легковой', 'Грузовой', 'Автобус', 'Мотоцикл']
@@ -185,7 +95,11 @@ const app = Vue.createApp({
             }
         },
         methods: {
-            onSubmit(values) {
+            onSubmit() {
+
+                let x = JSON.stringify(this.form)
+                console.log(x)
+
                 // TODO:
             }
         }
