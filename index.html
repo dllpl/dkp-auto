@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Договор купли-продажи автомобиля, мотоцикла, транспортного средства</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.4.10/dist/vuetify.min.css">
+</head>
+<body>
+<div id="app">
+    <v-form v-model="valid" v-slot="{errors}">
+        <v-container>
+            <v-field
+                    v-slot="{ field, errors }"
+                    rules="required|min:10|max:10|alpha:ru"
+                    name="form.date"
+            >
+                <v-text-field
+                        v-bind="field"
+                        :model="form.date"
+                        :counter="30"
+                        label="Дата оформления"
+                        :error-messages="errors"
+                        class="mb-3"
+                ></v-text-field>
+            </v-field>
+
+<!--            <v-text-field-->
+<!--                    v-model="form.place"-->
+<!--                    rules="required"-->
+<!--                    :counter="10"-->
+<!--                    label="Место офоромления"-->
+<!--                    hide-details-->
+<!--                    required-->
+<!--            ></v-text-field>-->
+        </v-container>
+    </v-form>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/vee-validate@next"></script>
+<script src="https://unpkg.com/@vee-validate/rules@next"></script>
+<script src="https://unpkg.com/@vee-validate/i18n@next"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@3.4.10/dist/vuetify.min.js"></script>
+<script>
+    const {defineRule, Form, Field, ErrorMessage, configure} = VeeValidate
+    const {setLocale, loadLocaleFromURL, localize} = VeeValidateI18n
+    const {createVuetify} = Vuetify
+
+    Object.keys(VeeValidateRules.default).forEach(rule => {
+        defineRule(rule, VeeValidateRules[rule])
+    })
+    loadLocaleFromURL('https://unpkg.com/@vee-validate/i18n@4.5.7/dist/locale/ru.json')
+    configure({
+        generateMessage: localize('ru', {
+            names: {
+                'form.date': '"Дата оформления"'
+            }
+        })
+    })
+
+    const vuetify = createVuetify()
+</script>
+
+<script>
+    const app = Vue.createApp({
+        components: {
+            VForm: Form,
+            VField: Field,
+            ErrorMessage,
+        },
+        data() {
+            return {
+                valid: false,
+                form: {
+                    date: '',
+                    place: ''
+                }
+            }
+        },
+        methods: {
+            onSubmit(values) {
+                // TODO:
+            }
+        }
+    })
+        .use(vuetify)
+        .mount('#app')
+
+
+</script>
+</body>
+</html>
