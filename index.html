@@ -17,13 +17,17 @@
             padding: 0;
         }
 
+        @media (max-width: 1024px) {
+
+        }
+
+
     </style>
 </head>
 <body>
 <div id="app">
-    <v-form v-model="valid" v-slot="{errors}">
+    <v-form v-slot="{validate}">
         <v-container>
-
             <v-card title="Дата и место составления" class="mb-5">
                 <v-card-text>
                     <v-field
@@ -694,7 +698,7 @@
                 </v-card-text>
             </v-card>
             <v-row justify="center" align="center" justify-sm="space-between">
-                <v-btn color="blue" class="mb-5 mb-sm-0" @click="onSubmit">
+                <v-btn color="blue" class="mb-5 mb-sm-0" @click="submit(validate)">
                     Скачать договор
                 </v-btn>
                 <v-btn variant="plain">

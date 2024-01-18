@@ -91,16 +91,29 @@ const app = Vue.createApp({
                 },
                 dict: {
                     auto_types: ['Легковой', 'Грузовой', 'Автобус', 'Мотоцикл']
+                },
+
+                loaders: {
+                    btn: {
+                        submit: false
+                    }
                 }
             }
         },
         methods: {
-            onSubmit() {
+            async submit(validate) {
 
-                let x = JSON.stringify(this.form)
-                console.log(x)
+                let val_data = await validate()
+                let form = this.form
 
-                // TODO:
+                if(val_data.valid) {
+
+                    this.loaders.btn.submit = true
+
+                    console.log(form)
+                } else {
+                    //TODO уведомление
+                }
             }
         }
     },
