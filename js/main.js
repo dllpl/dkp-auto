@@ -106,7 +106,7 @@ const app = Vue.createApp({
                 let val_data = await validate()
                 let form = this.form
 
-                if(val_data.valid) {
+                if (val_data.valid) {
 
                     this.loaders.btn.submit = true
 
