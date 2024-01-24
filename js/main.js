@@ -108,16 +108,22 @@ const app = Vue.createApp({
 
                 if (val_data.valid) {
 
-                    // this.loaders.btn.submit = true
+                    this.loaders.btn.submit = true
 
                     fetch('https://automost.pro/docs/dkp', {
                         method: 'POST',
                         body: JSON.stringify(form),
                         headers: {'Content-type': 'application/json; charset=UTF-8'}
-                    }).then((response) => response.json())
-                        .then((data) => {
-                            console.log(data)
-                        })
+                    }).then((response) => response.blob())
+                        .then((blob) => {
+                            const url = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = 'Договор купли-продажи автомобиля.pdf';
+                            a.click();
+                        }).finally(() => {
+                        this.loaders.btn.submit = false
+                    })
 
                 } else {
                     //TODO уведомление
