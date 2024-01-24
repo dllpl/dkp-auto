@@ -26,6 +26,20 @@
         .v-card-text {
             padding: 0.5rem;
         }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            clip: rect(0 0 0 0);
+            -webkit-clip-path: inset(100%);
+            clip-path: inset(100%);
+        }
     </style>
 </head>
 <body>
@@ -708,25 +722,9 @@
                     Скачать пустой бланк
                 </v-btn>
             </v-row>
-
         </v-container>
     </v-form>
-    <a class="sr_only" href="https://webseed.ru" title="Заказать разработку и продвижение сайта в Челнах и Казани. Вебсид.ру">Заказать разработку и продвижение сайта в Челнах и Казани. Вебсид.ру</a>
-    <style>
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            padding: 0;
-            border: 0;
-            overflow: hidden;
-            white-space: nowrap;
-            clip: rect(0 0 0 0);
-            -webkit-clip-path: inset(100%);
-            clip-path: inset(100%);
-        }
-    </style>
+    <a class="sr-only" href="https://webseed.ru" title="Заказать разработку и продвижение сайта в Челнах и Казани. Вебсид.ру">Заказать разработку и продвижение сайта в Челнах и Казани. Вебсид.ру</a>
 </div>
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 <script src="https://unpkg.com/vee-validate@next"></script>
@@ -738,3 +736,4 @@
 <script src="js/main.js"></script>
 </body>
 </html>
+
