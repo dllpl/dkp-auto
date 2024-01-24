@@ -108,9 +108,17 @@ const app = Vue.createApp({
 
                 if (val_data.valid) {
 
-                    this.loaders.btn.submit = true
+                    // this.loaders.btn.submit = true
 
-                    console.log(form)
+                    fetch('https://automost.pro/docs/dkp', {
+                        method: 'POST',
+                        body: JSON.stringify(form),
+                        headers: {'Content-type': 'application/json; charset=UTF-8'}
+                    }).then((response) => response.json())
+                        .then((data) => {
+                            console.log(data)
+                        })
+
                 } else {
                     //TODO уведомление
                 }

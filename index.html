@@ -716,7 +716,7 @@
                 </v-card-text>
             </v-card>
             <v-row justify="center" align="center" justify-sm="space-between">
-                <v-btn color="blue" class="mb-5 mb-sm-0" @click="submit(validate)">
+                <v-btn color="blue" class="mb-5 mb-sm-0" @click="submit(validate)" :loading="loaders.btn.submit">
                     Скачать договор
                 </v-btn>
                 <v-btn variant="plain">
