@@ -14,7 +14,7 @@ const app = Vue.createApp({
                         mask: '##.##.####'
                     },
                     vin: {
-                        mask: '#################'
+                        preProcess: val => val.toUpperCase()
                     },
                     pass_code: {
                         mask: '###-###'
