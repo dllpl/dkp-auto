@@ -94,6 +94,7 @@ const app = Vue.createApp({
                 },
 
                 loaders: {
+                    global: true,
                     btn: {
                         submit: false
                     }
@@ -129,6 +130,9 @@ const app = Vue.createApp({
                     //TODO уведомление
                 }
             }
+        },
+        mounted() {
+            this.loaders.global = false
         }
     },
 )

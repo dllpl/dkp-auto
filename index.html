@@ -44,7 +44,14 @@
 </head>
 <body>
 <div id="app">
-    <v-form v-slot="{validate}">
+    <div class="text-center" v-if="loaders.global">
+        <v-progress-circular
+                indeterminate
+                :size="50"
+                color="primary"
+        ></v-progress-circular>
+    </div>
+    <v-form v-slot="{validate}" v-else>
         <v-container>
             <v-card title="Дата и место составления" class="mb-5">
                 <v-card-text>
@@ -712,7 +719,7 @@
                                 clearable
                                 v-bind="field"
                                 v-model="form.auto.price"
-                                label="Стоимость ТС"
+                                label="Стоимость ТС, руб."
                                 :error-messages="errors"
                                 variant="outlined"
                                 density="compact"
